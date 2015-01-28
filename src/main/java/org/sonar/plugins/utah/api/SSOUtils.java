@@ -17,15 +17,15 @@
  * License along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02
  */
-package org.sonar.plugins.openid.api;
+package org.sonar.plugins.utah.api;
 
 import com.google.common.base.Throwables;
 import org.openid4java.message.AuthSuccess;
 import org.openid4java.message.MessageException;
 import org.openid4java.message.MessageExtension;
 
-public final class OpenIdUtils {
-  private OpenIdUtils() {
+public final class SSOUtils {
+  private SSOUtils() {
     // only static methods
   }
 

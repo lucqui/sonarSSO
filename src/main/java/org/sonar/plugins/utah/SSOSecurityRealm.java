@@ -17,15 +17,28 @@
  * License along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02
  */
-package org.sonar.plugins.openid;
+package org.sonar.plugins.utah;
 
 import org.sonar.api.security.Authenticator;
+import org.sonar.api.security.ExternalUsersProvider;
+import org.sonar.api.security.SecurityRealm;
 
-public final class OpenIdAuthenticator extends Authenticator {
+public final class SSOSecurityRealm extends SecurityRealm {
+
+  public static final String KEY = "openid";
 
   @Override
-  public boolean doAuthenticate(Context context) {
-    return context.getRequest().getAttribute(OpenIdValidationFilter.USER_ATTRIBUTE) != null;
+  public Authenticator doGetAuthenticator() {
+    return new SSOAuthenticator();
   }
 
+  @Override
+  public ExternalUsersProvider getUsersProvider() {
+    return new SSOUserProvider();
+  }
+
+  @Override
+  public String getName() {
+    return KEY;
+  }
 }

@@ -17,7 +17,7 @@
  * License along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02
  */
-package org.sonar.plugins.openid.api;
+package org.sonar.plugins.utah.api;
 
 import org.openid4java.message.AuthRequest;
 import org.openid4java.message.AuthSuccess;
@@ -32,7 +32,7 @@ import org.sonar.api.ServerExtension;
  *
  * @since 1.1
  */
-public abstract class OpenIdExtension implements ServerExtension {
+public abstract class SSOExtension implements ServerExtension {
 
   /**
    * Override this method to complete the request attributes (AX/SREG)
@@ -42,7 +42,7 @@ public abstract class OpenIdExtension implements ServerExtension {
   }
 
   /**
-   * Override this method to complete the verification of OpenId response.
+   * Override this method to complete the verification of SSO response.
    *
    * @return is the response verified and user allowed to connect ?
    * @throws RuntimeException if the response can't be verified

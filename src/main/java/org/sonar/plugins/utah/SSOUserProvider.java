@@ -17,25 +17,15 @@
  * License along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02
  */
-package org.sonar.plugins.openid;
+package org.sonar.plugins.utah;
 
-import org.junit.Test;
+import org.sonar.api.security.ExternalUsersProvider;
+import org.sonar.api.security.UserDetails;
 
-import static org.fest.assertions.Assertions.assertThat;
+public final class SSOUserProvider extends ExternalUsersProvider {
 
-public class OpenIdSecurityRealmTest {
-  @Test
-  public void hasAuthenticator() {
-    assertThat(new OpenIdSecurityRealm().doGetAuthenticator()).isInstanceOf(OpenIdAuthenticator.class);
-  }
-
-  @Test
-  public void hasUserProvider() {
-    assertThat(new OpenIdSecurityRealm().getUsersProvider()).isInstanceOf(OpenIdUserProvider.class);
-  }
-
-  @Test
-  public void justForCoverage() {
-    assertThat(new OpenIdSecurityRealm().getName()).isEqualTo("openid");
+  @Override
+  public UserDetails doGetUserDetails(Context context) {
+    return (UserDetails) context.getRequest().getAttribute("openid_user");
   }
 }

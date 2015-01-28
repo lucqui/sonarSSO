@@ -17,7 +17,7 @@
  * License along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02
  */
-package org.sonar.plugins.openid;
+package org.sonar.plugins.utah;
 
 import org.openid4java.message.AuthRequest;
 import org.sonar.api.web.ServletFilter;
@@ -26,17 +26,15 @@ import javax.servlet.*;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+import org.sonar.api.config.Settings;
+
 /**
  * Requests to login form (/sessions/new) are redirected to the OpenID form
  * hosted on the identity provider, for example Google.
  */
-public final class OpenIdAuthenticationFilter extends ServletFilter {
+public final class SSOAuthenticationFilter extends ServletFilter {
 
-  private OpenIdClient openIdClient;
 
-  public OpenIdAuthenticationFilter(OpenIdClient openIdClient) {
-    this.openIdClient = openIdClient;
-  }
 
   @Override
   public UrlPattern doGetPattern() {
@@ -44,11 +42,13 @@ public final class OpenIdAuthenticationFilter extends ServletFilter {
   }
 
   public void init(FilterConfig filterConfig) throws ServletException {
+	  
   }
 
   public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
-    AuthRequest authRequest = openIdClient.createAuthenticationRequest();
-    ((HttpServletResponse) servletResponse).sendRedirect(authRequest.getDestinationUrl(true));
+	  
+//    AuthRequest authRequest = ;
+//    ((HttpServletResponse) servletResponse).sendRedirect(authRequest.getDestinationUrl(true));
   }
 
   public void destroy() {

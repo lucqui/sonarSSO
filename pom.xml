@@ -150,11 +150,19 @@
         <groupId>org.codehaus.sonar</groupId>
         <artifactId>sonar-packaging-maven-plugin</artifactId>
         <configuration>
-          <pluginName>OpenID</pluginName>
-          <pluginClass>org.sonar.plugins.openid.OpenIdPlugin</pluginClass>
+          <pluginName>SSO</pluginName>
+          <pluginClass>org.sonar.plugins.utah.SSOPlugin</pluginClass>
         </configuration>
       </plugin>
+		<plugin>
+        <groupId>com.mycila.maven-license-plugin</groupId>
+        <artifactId>maven-license-plugin</artifactId>
+        <configuration>
+     <skip>true</skip>
+   </configuration>
+      </plugin>
     </plugins>
+    
   </build>
 
 </project>
